@@ -50,3 +50,54 @@ These are the types of game files that I know how to read and edit:
 	- 'common/gamemode' contains gameplay and matchup definitions for all game modes, including all rules and default teams and players.
 	- 'common/overachiever/BounceProject.xml' defines the in-game Challenges.
 	- 'ps3/database/bounce-meta.xml' details the schema of the 'bounce.db' database.
+
+
+
+## Tools
+To help create new image files for the game, many image templates will be included in this guide.  These are all in Paint.net's .PDN format.  I like Paint.net, but I wish I had chosen something cross-platform and open source from the start.  I haven't tried to convert or open .PDN files in another application, but I hope it's possible and not too much of a pain.
+
+
+
+## Archive Files
+NBA JAM: On Fire Edition has more than 200 .AST archive files.  I think these are the most important ones:
+
+- 'ps3/bigs/ge_player_big.ast' contains player model textures:
+	- Body textures (BODY_DIF)
+	- Head textures (HEAD_DIF)
+	- Shoes
+	- Uniforms
+- 'ps3/bigs/ge_environment_big.ast' contains arena textures:
+	- Baseline textures (COURT_BASELINE)
+	- Center court logos (COURT_CENTER)
+	- Secondary court logos (COURT_SECONDARY)
+	- Court surface textures (COURT_SURFACE)
+	- Coaches (CROWD_COACH)
+	- Crowd foam fingers (CROWD_FINGERS)
+	- Team mascots (CROWD_MASCOT)
+	- Crowd signs (CROWD_SIGNAGE)
+	- Media table banners (DORNA)
+	- Media tables and the team logo on the right (MEDIATABLE)
+	- Media table scoreboard team logos on the left (MEDIATABLE_LOGO)
+	- Thin video screens (POWERRING, POWERRING_GLOW)
+	- Team banners and stadium entranceway signs (SIDELINE)
+	- Stanchion bodies (STAN_BODY)
+	- Crowd aisle lighting (VIP_LIGHTS)
+	- And more!
+- 'ps3/bigs/fecro_big.ast' contains over 2,600 front-end images:
+	- Player headshots (PLSH)
+	- In-menu nametags (PLYN)
+	- Team selection screen logos (TMSI)
+	- Team selection screen background logos (TMPN)
+	- "Tonight's Matchup" team logos (TMLG)
+	- Road Trip team banners (TMBR), Jam Store team logos (TMSD)
+	- Loading screen photos (LOBG)
+	- Many files are from the previous NBA JAM game and are completely unused in this game (GMIT, PROF_0-447, TMBT, TMCP, TMMI, TMMU, TMSP, TMW1, TMWD, ULCP)
+- 'ps3/bigs/ge_hud_big.ast' contains HUD and overlay textures:
+	- "Tonight's Matchup" logo behind the players (INTRO_TEAM_BG)
+	- Top scoreboard team logos (LOGO_TEX)
+	- In-game player nametags (NAME_TEX)
+	- Post-score scoreboard team logos (SCORE_TEAM)
+	- "Team wins" text (TEAM_WINS)
+- 'ps3/genbigs/jersey_font_big.ast' contains jersey lettering textures
+
+QuickBMS (https://aluigi.altervista.org/quickbms.htm) and the 'nbajamfire.bms' script (https://aluigi.altervista.org/bms/nbajamfire.bms) can be used to extract and reimport files from all of the .AST files.  When extracting, I don't use any special options.  To reimport, I use the "-w" and "-r" options.
