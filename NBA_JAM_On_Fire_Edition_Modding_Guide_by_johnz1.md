@@ -99,7 +99,8 @@ QuickBMS (https://aluigi.altervista.org/quickbms.htm) and the 'nbajamfire.bms' s
 
 
 ## Texture Files
-| Parent File | Filename | Description | bounce.db Field | Resolution | DDS Compression Type | Mip maps | Notes |
+Texture files are stored in archive files.  These are all of the texture files for players, teams, and arenas.
+| Archive File | Filename | Description | bounce.db Field | Resolution | DDS Compression Type | Mip maps | Notes |
 | - | - | - | - | - | - | - | - |
 | fecro_big.ast | PLSH_* | In-menu player headshot photos | AssetID | 256x256 | DXT5 | No |  |
 | fecro_big.ast | PLYN_* | In-menu player nametags | AssetID | 256x32 | DXT5 | No |  |
@@ -136,3 +137,67 @@ QuickBMS (https://aluigi.altervista.org/quickbms.htm) and the 'nbajamfire.bms' s
 | ge_player_big.ast | (Shoes) | In-game player shoes | AttribKey | Mostly 256x256, but sometimes 1024x1024 | DXT1 | No |  |
 | ge_player_big.ast | (Uniforms) | In-game player uniforms | AttribKey | 512x512 | DXT5 | Yes |  |
 | jersey_font_big.ast | JERSEY_FONT_* | In-game uniform numbers and letters | JerseyPackType | Mostly 512x512, but some 128x128 and 64x64 | DXT5 | Sometimes |  |
+
+
+## How to Create Player Head Textures
+Almost all player head textures are 1024x512 DDS image files that have eight 256x256 images.  However, heads #3 and #8 seem to be completely unused.  I have named the six heads "Yelling" (used when dunking), "Angry" (also used when dunking), "Pain" (used when a player is shoved, stolen from, and blocked), "Front", "Side", and "Rear".
+
+Unfortunately, player head textures are not "one size fits all" in relation to the player models.  Models have a value in ATTRIBDB that scales the size of the head texture.  Without being able to edit ATTRIBDB, this means that when you use a head texture file with different player models, it's unlikely to be the same size in the game.  This makes moving players to a different player model painful, because you need to resize all of their head textures.
+
+Most player models only have one head texture, but players who have a headband (and even some that don't wear a headband, like Kobe Bryant, Chris Paul, and Dwight Howard) have two (for home and away).
+
+The "Side" head is the most important because it's by far the one you see the most.
+
+As with everything you create for this game, I recommend saving what you have done at every step.  That way, you shouldn't have to re-do work if you want to go backwards.  For example, when I'm editing a head, I have image layers to save the progress at every step (in addition to saving every color correction attempt): Before Cutting Neck, Before Adding Transparency, Before Rotating, After Rotating
+
+The guidelines provided below are based on my analysis of the stock head textures, and what I think looks good.
+
+- Make a copy of the "Player Head Texture" template folder for the new player head
+	- I use the player name and year for the name of these folders (e.g. "Brandon Miller (2026)")
+- Collect photos of the player and categorize them in the folders under "Photos"
+	- Getty Images (gettyimages.com) is the best resource that I've found.  They provide high resolution photos with watermarks that don't usually cover the players' heads.
+	- Only use in-game photos.  Avoid photo shoot photos.  They just don't good in the game.
+	- Avoid photos that are over-exposed or have too much light reflection.  It makes color correcting much more difficult, if not impossible.  This is a classic problem with players who are bald.
+ 	- Ideally, use photos from the same game.  This kind of consistency looks better, and makes things easier when color correcting.  This isn't usually possible, so at least try to have all the photos be from the same small period of time.  My standard is to at least have "Front" and "Side" be from the same game because the transition between these two happens very frequently, and can be jarring if they aren't similar looking.
+	- Ideally, the "Yelling", "Angry", "Pain", and "Front" photos should all be facing the camera and not turned to the side.
+	- Ideally, don't use photos where the camera is very close to the player or zoomed in.  It's difficult to make these look right, and sometimes they just don't ever look good.
+	- The "Side" photo should be turned to the side, but not completely.  If it's completely turned to the side, it won't look good when the player is moving diagonally.  You should be able to see the far side eye, but not anything past it.  See the example head textures in "Player Head Texture Examples.pdn":
+		- Ricky Rubio is a good example of a head that's turned too far.
+		- Kevin Durant is a good example of a head that's not turned far enough.
+		- Tim Duncan is a good example of a proper "Side" head.
+	- The "Rear" photo should be of the back of the head, but slightly turned.  If their head isn't slightly turned, it won't look good when the player is moving diagonally.  It should be turned enough so that you can see the indent of their eye socket, but not the eye itself, and you should at least be able to see part of the far side ear.  If you can't see both ears, the head is probably turned too far.  See the example head textures in "Player Head Texture Examples.pdn":
+		- Anthony Davis is a good example of a head that's turned too far.
+		- Paul Pierce is a good example of a head that's not turned enough.
+		- Tim Duncan is a good example of a proper "Rear" head.
+- Choose one photo to use for each of the six heads.
+	- I recommend moving the others in the "Archive" folders.
+- Crop out the backgrounds of the six photos.  Use the example head textures in "Player Head Texture Examples.pdn" for reference.
+	- There are many applications that can remove the background of an image.  My current favorite for free applications is the "Remove background" feature of Windows Paint.
+	- The "Yelling", "Angry", "Pain", and "Front" heads should only include player's head.  The neck should be removed.
+	- The "Side" head requires some editing to look good:
+		- The back of the head below the ear should be cut inwards
+		- The front of the neck beneath the chin should also be cut inwards
+		- There should be a transparent gradient applied to the neck.  This should be at an angle that makes more of the back of the neck transparent.
+	- The "Rear" head also requires some editing:
+		- The back of the head below the ear should be cut inwards - even more dramatically than the "Side" head
+		- The front of the neck beneath the chin should also be cut inwards
+		- There should be a transparent gradient applied to the neck.  This should be at an angle that makes more of the back of the neck transparent.
+- Assuming you've already created the body texture, start the game and take a couple screenshots of the player (F12 in RPCS3).  This will be used for color correcting the heads.
+- Adjust each head to match the player's body
+	- To get a head that looks perfect, you will almost always need to adjust the brightness, contrast, hue, and saturation.  In Paint.net, I use BoltBait's Combined Adjustments to adjust and preview all of these at once.
+	- For me, this takes at least a couple rounds of reviewing and adjusting.  For the first pass, I only adjust the Side head.
+- Assemble the heads
+	- Open the template head texture file ("TEMPLATE_HEAD_DIF.pdn")
+	- Open the .DDS stock player head texture from the player model you are replacing.  Copy the image onto the lowest layer (named "ORIGINAL_HEAD_DIF" in the template).  Player models scale the head texture, so you want to size the new heads to match the target player model.
+	- "Yelling" and "Angry" should be ~15% larger than all of the other heads.
+	- I think "Rear" should be slightly smaller than "Front" and "Side".
+	- If a head is looking in a particular direction, have them looking to the right.
+	- Observe the divider lines.  You don't want hair from one head to show up on the edges of another head.
+- Create the head texture file
+	- After saving the file in a lossless format that supports layers (like Paint.net's .PDN), save the file as a .DDS image with the specs listed in the "Texture Files" section.  I recommend naming the file with the name of the player model's head texture (e.g. "TIM_DUNCAN_HOME_HEAD_DIF", so that you know which player model this head was sized for.
+	- Copy the any head texture file into the same folder and give it the same name as the player model's head texture (e.g. "TIM_DUNCAN_HOME_HEAD_DIF").
+	- Use the "Copy DDS Images to Texture Files.ps1" script to update the texture file.
+- Import the new head texture into 'ge_player_big.ast' or 'rend_roster_update_big.ast' (depending on the player model)
+- Test in-game, then make corrections and adjustments
+	- It's highly unlikely that all six heads will look right on the first pass.  The size, positioning, and color almost always need to be adjusted.
+	- I'm a bit of a perfectionist, so I create a video capture of the player, then review each head by watching the video (pausing, rewinding, going frame by frame) and taking notes of what should be changed.  If you want to create player heads that look great, I recommend doing this.
