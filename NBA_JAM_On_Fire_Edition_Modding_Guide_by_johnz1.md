@@ -139,6 +139,15 @@ Texture files are stored in archive files.  These are all of the texture files f
 | jersey_font_big.ast | JERSEY_FONT_* | In-game uniform numbers and letters | JerseyPackType | Mostly 512x512, but some 128x128 and 64x64 | DXT5 | Sometimes |  |
 
 
+# How to Edit the Localization Database String Table to Modify In-Game Text
+eng_us.db is the localization database for the US version of the game.  This database contains only one table, named "LanguageStrings".  It can be modified with a combination of FIFA DB Master and FIFA DB Converter:
+
+- Convert the stock eng_us.db from big endian to little endian with FIFA Database Converter ("DB Converter").
+- Edit the database in DB Master ("DBMaster_15").
+	- I highly recommend exporting the table to a text file, editing that file in a text editor, then importing it with DB Master.
+- Convert the file back to big endian with FIFA Database Converter.
+
+
 ## How to Create Player Head Textures
 Almost all player head textures are 1024x512 DDS image files that have eight 256x256 images.  However, heads #3 and #8 seem to be completely unused.  I have named the six heads "Yelling" (used when dunking), "Angry" (also used when dunking), "Pain" (used when a player is shoved, stolen from, and blocked), "Front", "Side", and "Rear".
 
