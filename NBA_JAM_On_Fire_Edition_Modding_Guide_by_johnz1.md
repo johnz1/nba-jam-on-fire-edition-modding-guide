@@ -1,13 +1,13 @@
 # NBA JAM: On Fire Edition Modding Guide by johnz1
 
 
-## Introduction
+# Introduction
 This is a guide for modding NBA JAM: On Fire Edition for PlayStation 3.  Reference files, templates, databases, spreadsheets, extracted files, and applications will be included in the future.  With this information, it should be possible to create a full conversion mod with new players, teams, arenas, campaigns, and more.
 
 If you are considering starting a new JAM OFE project, feel free to contact me for advice.  I've been working on this game since 2019.  I'm happy to consult on a project and help avoid the many pitfalls there are with modding this game.  My email address is listed on nba-jam.com
 
 
-## Limitations and Warnings
+# Limitations and Warnings
 Unfortunately, there are critical elements of the game that I do not know how to edit.  The most important file is ATTRIBDB.  This is the attribute database that controls many things, for example:
 
 - Uniforms that a player wears
@@ -28,7 +28,7 @@ Working around ATTRIBDB is quite painful.  For example:
 The bottom line is that modding this game (and especially overhauling the roster) without editing ATTRIBDB is arduous and time consuming.  It requires careful planning, and any changes to the plan may require extra hours of work.  I don't want to discourage anyone from modding this game, but I think everyone should be firmly warned that until ATTRIBDB can be edited, modding this game can be frustrating and painful.  I generally encourage everyone to focus on figuring out ATTRIBDB before starting a major JAM OFE project.  It will make things so much better and easier.
 
 
-## Overview
+# Overview
 These are the types of game files that I know how to read and edit:
 
 - Archives (.ast)
@@ -49,11 +49,11 @@ These are the types of game files that I know how to read and edit:
 	- 'ps3/database/bounce-meta.xml' details the schema of the 'bounce.db' database.
 
 
-## Tools
+# Tools
 To help create new image files for the game, many image templates will be included in this guide.  These are all in Paint.net's .PDN format.  I like Paint.net, but I wish I had chosen something cross-platform and open source from the start.  I haven't tried to convert or open .PDN files in another application, but I hope it's possible and not too much of a pain.
 
 
-## Archive Files
+# Archive Files
 NBA JAM: On Fire Edition has more than 200 .AST archive files.  I think these are the most important ones:
 
 - 'ps3/bigs/ge_player_big.ast' contains player model textures:
@@ -98,7 +98,7 @@ NBA JAM: On Fire Edition has more than 200 .AST archive files.  I think these ar
 QuickBMS (https://aluigi.altervista.org/quickbms.htm) and the 'nbajamfire.bms' script (https://aluigi.altervista.org/bms/nbajamfire.bms) can be used to extract and reimport files from all of the .AST files.  When extracting, I don't use any special options.  To reimport, I use the "-w" and "-r" options.
 
 
-## Texture Files
+# Texture Files
 Texture files are stored in archive files.  These are all of the texture files for players, teams, and arenas.
 | Archive File | Filename | Description | bounce.db Field | Resolution | DDS Compression Type | Mip maps | Notes |
 | - | - | - | - | - | - | - | - |
@@ -139,7 +139,7 @@ Texture files are stored in archive files.  These are all of the texture files f
 | jersey_font_big.ast | JERSEY_FONT_* | In-game uniform numbers and letters | JerseyPackType | Mostly 512x512, but some 128x128 and 64x64 | DXT5 | Sometimes |  |
 
 
-## How to Edit the Localization Database String Table to Modify In-Game Text
+# How to Edit the Localization Database String Table to Modify In-Game Text
 eng_us.db is the localization database for the US version of the game.  This database contains only one table, named "LanguageStrings".  It can be modified with a combination of FIFA DB Master and FIFA DB Converter:
 
 - Convert the stock eng_us.db from big endian to little endian with FIFA Database Converter ("DB Converter").
@@ -148,7 +148,7 @@ eng_us.db is the localization database for the US version of the game.  This dat
 - Convert the file back to big endian with FIFA Database Converter.
 
 
-## How to Create Player Head Textures
+# How to Create Player Head Textures
 Almost all player head textures are 1024x512 DDS image files that have eight 256x256 images.  However, heads #3 and #8 seem to be completely unused.  I have named the six heads "Yelling" (used when dunking), "Angry" (also used when dunking), "Pain" (used when a player is shoved, stolen from, and blocked), "Front", "Side", and "Rear".
 
 Unfortunately, player head textures are not "one size fits all" in relation to the player models.  Models have a value in ATTRIBDB that scales the size of the head texture.  Without being able to edit ATTRIBDB, this means that when you use a head texture file with different player models, it's unlikely to be the same size in the game.  This makes moving players to a different player model painful, because you need to resize all of their head textures.
