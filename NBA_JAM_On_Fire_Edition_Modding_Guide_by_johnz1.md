@@ -39,14 +39,14 @@ These are the types of game files that I know how to read and edit:
 	- A variety of DDS specification options are used, but all of them are either BC1 (DX1) or BC3 (DXT5).
 - Databases
 	- These files are not all in the same format, so there is no universal editor for all of them.
-	- 'ps3/database/bounce.db' contains data for players, teams, Road Trip, challenges/achievements, Jam Store items, and more.  It is a T3DB database that can be modified using Artem Khassanov's tools: https://www.artemkh.com/nhl/devtools/
-	- 'ps3/loc/eng_us.db' is the English localization database.  It contains all non-image text in the game, aside from the team and player names that are in 'bounce.db'.  It can be modified with a combination of FIFA DB Master and FIFA DB Converter.
-	- 'ps3/bigs/attribdb_big.ast' is ATTRIBDB.  It is an AttribSys database that is used in other games like Burnout, Need for Speed, and FIFA.  I do not know how to read or edit this database.
+	- 'ps3/database/bounce.db' is a T3DB database that contains data for players, teams, Road Trip, challenges/achievements, Jam Store items, and more.
+	- 'ps3/loc/eng_us.db' is the localization database for the US/English version of the game.
+	- 'ps3/bigs/attribdb_big.ast' is ATTRIBDB.  It is an AttribSys database that is also used in other games like Burnout, Need for Speed, and FIFA.  I do not know how to read or edit this database.
 - Definition files (.xml)
 	- These are plain text XML files.  They can be read and modified in any text editor.
 	- 'common/gamemode' contains gameplay and matchup definitions for all game modes, including all rules and default teams and players.
 	- 'common/overachiever/BounceProject.xml' defines the in-game Challenges.
-	- 'ps3/database/bounce-meta.xml' details the schema of the 'bounce.db' database.
+	- 'ps3/database/bounce-meta.xml' details the schema of the bounce.db database.
 
 
 # Tools
@@ -139,8 +139,28 @@ Texture files are stored in archive files.  These are all of the texture files f
 | jersey_font_big.ast | JERSEY_FONT_* | In-game uniform numbers and letters | JerseyPackType | Mostly 512x512, but some 128x128 and 64x64 | DXT5 | Sometimes |  |
 
 
+# How to Edit the bounce.db Database
+bounce.db is a T3DB database that defines players, teams, unlockable items, and more.  While there are several ways to read and edit this file, as far as I know they all use Artem Khassanov's TDBAccess library.
+
+bounce.db uses short names for all table and column names that don't at all describe their contents or purpose.  Fortunately, the NBA JAM OFE developers were nice enough to include a mapping and description of everything in the 'bounce-meta.xml' file.
+
+For many columns (e.g. player ratings, height), you must subtract one from the value in the database to get the real value.
+
+## TDBView
+If you just want to view bounce.db, Artem Khassanov's TDBView works well (https://www.artemkh.com/nhl/tdbview/).
+
+## Madden Xtreme DB Editor
+If you want to quickly modify bounce.db, the Madden Xtreme DB Editor isn't perfect, but it does work (https://www.footballidiot.com/forum/viewtopic.php?t=21400).  The most important thing to know is that the table and column names are reversed.  For example, the 'player' table (short name: "mCJj") is "jJCm".
+
+## Create a New Editor
+If you want to modify bounce.db but want something easier to use, you might have to create your own app.  Artem has already done the hard work with the TDBAccess library.  I'm sure a decent editor app can be created with AI very quickly.
+
+## My Solution
+For my projects, I have put all data I need into a SQLite DB and basically use that as an editor.  I have a script that reads the SQLite DB and uses TDBAccess to recreate all teams and players in bounce.db.  This workflow really only works when you want to manage an entire conversion project.  This is the reason why I don't use an "editor" app for bounce.db.
+
+
 # How to Edit the Localization Database String Table to Modify In-Game Text
-eng_us.db is the localization database for the US version of the game.  This database contains only one table, named "LanguageStrings".  It can be modified with a combination of FIFA DB Master and FIFA DB Converter:
+eng_us.db is the localization database for the US version of the game.  This database contains only one table ("LanguageStrings") for all non-image text in the game, aside from the team and player names that are in bounce.db.  It can be modified with a combination of FIFA DB Master and FIFA DB Converter:
 
 - Convert the stock eng_us.db from big endian to little endian with FIFA Database Converter ("DB Converter").
 - Edit the database in DB Master ("DBMaster_15").
