@@ -232,6 +232,7 @@ For my projects, I have put all data I need into a SQLite DB and basically use t
 - 'AttribKey' is the player model that the player uses.
 - 'ReflectionKey' is the player model that is reflected off the court's surface.  This directly corresponds to AttribKey.
 - 'ScaledHeight' is the height of the player.  This doesn't change the player's proportions, it just scales everything in their player model.  Use this to adjust how tall a player is (but not how skinny or muscular they are).
+	- I believe this is the formula that the stock game uses: <Height in inches> * 0.0117 + 0.1
 - 'Handedness' controls which hand a player shoots with.
 	- "l" for left-handed
 	- "r" for right-handed
