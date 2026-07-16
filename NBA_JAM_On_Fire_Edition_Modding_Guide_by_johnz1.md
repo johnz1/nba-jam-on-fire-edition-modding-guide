@@ -264,6 +264,45 @@ This table defines all players in the game.
 - 'Tendency_Perimeter' is always "0".
 - 'Tendency_Steal' is always "0".
 
+## 'team' Table (BSXd)
+This table defines all teams in the game.
+- 'City' is the name of the team's city.
+	- Teams on the team selection screen are sorted by 'Category', then 'City'.  If you have two teams with the same 'City' name and you want to change the order that they are listed, add a tailing space to the end of the 'City' name that you want to be listed last.
+	- A no-break space (NBSP) at the beginning of the 'City' name will move the team to the end of the team list.
+- 'Name' is the team's nickname.  I think the only place that this is used is after the "Tonight's Matchup" screen.
+- 'Abbreviation' is an abbreviated name of the team.  This doesn't seem to be used in the game, but it must be set to one of the stock values.
+	- e.g. "CHI" for the Chicago Bulls.
+- 'Division' is the NBA division that the team is in.  I don't know if this is used by the game.
+	- 0 = Atlantic Division
+	- 1 = Southeast Division
+	- 2 = Central Division
+	- 3 = Northwest Division
+	- 4 = Southwest Division
+	- 5 = Pacific Division
+	- 6 = Non-NBA teams (European and fictional)
+- 'Overall' seems to an overall rating for the team.  I don't know if this is used in the game.
+	- The stock ratings don't make sense for the 2010-11 (when NBA JAM was released) or 2011-12 (when NBA JAM OFE was released) seasons.  I suspect they were made for an earlier season and simply were not updated.
+		- OKC has a rating of 75, but they won 50 games in 2009-10, went to the Conference Finals in 2010-11, and went to the NBA Finals in 2011-12.
+		- CLE has a rating of 92, but they were one of the worst teams in the league in 2010-11 and 2011-12.
+		- HOU has a rating of 92, but they missed the playoffs in 2009-10, 2010-11, and 2011-12.
+		- PHO has a rating of 92, but they missed the playoffs in 2010-11 and 2011-12.
+	- All of the fictional teams have a rating of 100.
+	- The highest rating for an NBA team is 96 for DEN.
+	- The lowest rating is 74 for MIN.
+- 'Unlocked' determines whether or not the team needs to be unlocked in the Jam Store.
+	- If you want a team to be available by default, set this to "1".
+- 'Category' controls the order that the team is displayed on the team selection screen
+	- NBA teams have a value of "0".  They are displayed first.
+	- Fictional teams have a value of "2".  They are displayed after the teams with a value of "0".
+	- To hide a team, set this to "1".
+- 'CC_MapLocX' and 'CC_MapLocY' do not seem to control anything.  The coordinates of cities on the Road Trip map are controlled by the 'roadtriplocations' table.
+- 'PrimaryColor' and 'SecondaryColor' are the two colors that are used in the background of one of the "Tonight's Matchup" screens before tip-off.
+- 'BenchColour' doesn't seem to control anything.
+- 'AssetID' sets the AssetID package for the team.  This includes the TMLG, TMPN, and TMSI files.
+- 'RenderAssetID' sets the RenderAssetID package for the team.  This includes the INTRO_TEAM_BG, LOGO_TEX, SCORE_TEAM, TEAM_WINS, CROWD_COACH, MEDIATABLE, and MEDIATABLE_LOGO files.
+- 'SpeechID' is the ID number for the team name audio used during a game.
+- 'Environment' is the ID of the arena that the team uses for their home games.
+
 
 # How to Edit the Localization Database String Table to Modify In-Game Text
 eng_us.db is the localization database for the US version of the game.  This database contains only one table ("LanguageStrings") for all non-image text in the game, aside from the team and player names that are in bounce.db.  It can be modified with a combination of FIFA DB Master and FIFA DB Converter:
