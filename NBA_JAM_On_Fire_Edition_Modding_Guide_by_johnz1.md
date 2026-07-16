@@ -1,7 +1,4 @@
 # NBA JAM: On Fire Edition Modding Guide by johnz1
-
-
-# Introduction
 This is a guide for modding NBA JAM: On Fire Edition for PlayStation 3.  Reference files, templates, databases, spreadsheets, extracted files, and applications will be included in the future.  With this information, it should be possible to create a full conversion mod with new players, teams, arenas, campaigns, and more.
 
 If you are considering starting a new JAM OFE project, feel free to contact me for advice.  I've been working on this game since 2019.  I'm happy to consult on a project and help avoid the many pitfalls there are with modding this game.  My email address is listed on nba-jam.com
@@ -159,7 +156,10 @@ If you want to modify bounce.db but want something easier to use, you might have
 For my projects, I have put all data I need into a SQLite DB and basically use that as an editor.  I have a script that reads the SQLite DB and uses TDBAccess to recreate all teams and players in bounce.db.  This workflow really only works when you want to manage an entire conversion project.  This is the reason why I don't use an "editor" app for bounce.db.
 
 
-# Details of the bounce.db 'player' Table
+# bounce.db Table and Column Descriptions
+
+## 'player' Table (mCJj)
+This table defines all players in the game.
 - 'FirstName' is the player's first name, but it doesn't seem to appear anywhere in the game.
 - 'LastName' is the player's last name.  The only place I've seen it used is the player's name on the back of their jersey.  This does not change the player's in-menu or in-game nametag.
 - 'TeamId' is the ID of the team that the player is assigned to.
@@ -307,6 +307,7 @@ The guidelines provided below are based on my analysis of the stock head texture
 - Choose one photo to use for each of the six heads.
 	- I recommend moving the others in the "Archive" folders.
 - Crop out the backgrounds of the six photos.  Use the example head textures in "Player Head Texture Examples.pdn" for reference.
+	- I recommend cropping the image to a square resolution.  This will help later when resizing for the final texture image.
 	- There are many applications that can remove the background of an image.  My current favorite for free applications is the "Remove background" feature of Windows Paint.
 	- The "Yelling", "Angry", "Pain", and "Front" heads should only include player's head.  The neck should be removed.
 	- The "Side" head requires some editing to look good:
