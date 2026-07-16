@@ -159,6 +159,111 @@ If you want to modify bounce.db but want something easier to use, you might have
 For my projects, I have put all data I need into a SQLite DB and basically use that as an editor.  I have a script that reads the SQLite DB and uses TDBAccess to recreate all teams and players in bounce.db.  This workflow really only works when you want to manage an entire conversion project.  This is the reason why I don't use an "editor" app for bounce.db.
 
 
+# Details of the bounce.db 'player' Table
+- 'FirstName' is the player's first name, but it doesn't seem to appear anywhere in the game.
+- 'LastName' is the player's last name.  The only place I've seen it used is the player's name on the back of their jersey.  This does not change the player's in-menu or in-game nametag.
+- 'TeamId' is the ID of the team that the player is assigned to.
+	- This will not change the uniform that player wears, but it will change the uniform lettering.
+	- To hide a player, set this to "99".
+- 'RosterPosition' is unknown.  It certainly has something to do with the player order when selecting a team, but I haven't been able to figure out how it works.  My workaround is to set all players to "0" and use 'Rating_Overall' to determine the player order.
+- 'JerseyNum' is the jersey number that the player wears.
+	- I haven't figured out how to set the number to "00".  My workaround is to replace an unused number with zero in the uniform lettering texture (JERSEY_FONT), then set 'JerseyNum' to two of that number.
+- 'Rating_*' are the player ratings.
+	- The database value is one higher than the real, in-game value.  e.g. If you want a rating to be 6, set it to 7.
+- 'Rating_Overall' is unknown, except that it determines the player order when selecting players.  e.g. A player with 'Rating_Overall' of 4 will be listed before a player with 'Rating_Overall' of 3.
+- 'Dunk_Package' controls which dunks and layups a player performs.
+	- 'package_layup_generic' is for players who don't dunk.  The only time they will dunk is if they are very close to the basket.
+	- 'package_dunk_basic' is for basic dunkers.
+	- 'package_dunk_bigman' is for big men.  This primarily features simple, powerful-looking dunks.
+	- 'package_dunk_highskill' is for big dunkers.  This features fancy, fast-moving dunks.
+	- 'package_dunk_highskill_ten' is for big dunkers.  I don't know the difference between this and 'package_dunk_highskill', but if you look at the stock players who have it, it's the best dunkers in NBA history: Dominique, LeBron, Kemp, Vince, and some others.  I believe this is the only package that includes the Jordan "jumpman" dunk.
+	- 'mirror' is only used by the JAMbots.  I haven't tested with it and don't know what other kind of player should be using it.
+	- 'package_dunk_ssx' is only used by the SSX players.  It includes unique snowboarding dunks.
+	- There are several packages that are unused in the stock game, but they aren't very useful:
+		- 'package_dunk_obama' doesn't seem to perform any new dunks.  It should be noted that Obama doesn't have this package assigned to him, which makes me think the developers were going to have a special dunk package for him but they didn't complete it.
+		- 'package_dunk_generic' always performs the same dunk.
+		- 'package_dunk_sprite' always performs the same dunk.
+		- 'package_dunk_jordan' has a very exciting name, but it seems to be the same as 'package_dunk_generic' because it always performs the same dunk.
+		- 'package_layup_bigman' doesn't seem to be any different from 'package_layup_generic'.
+		- 'package_layup_highskill' doesn't seem to be any different from 'package_layup_generic'.
+- 'Loco_Package' is the running animation that the player uses.
+	- 'package_loco_smallman' leans forward the most.
+	- 'package_loco_swingman' is more upright.
+	- 'package_loco_bigman' is very upright.
+	- 'mirror' is only used by the JAMbots.
+- 'Shot_Package' is the shot animation that the player uses.
+	- 'package_shot_generic' is the style that most players in the stock game use.
+	- 'package_shot_generic_bigman'
+	- 'package_shot_sigbird' (Larry Bird)
+	- 'package_shot_sigbol' (Bol Bol)
+	- 'package_shot_sigboozer' (Carlos Boozer)
+	- 'package_shot_sigbosh' (Chris Bosh)
+	- 'package_shot_sigcarter' (Vince Carter)
+	- 'package_shot_sigdavis' (Baron Davis)
+	- 'package_shot_sigdrj' (Julius Erving) is the only shot package that uses a hook shot instead of a jump shot.  I suspect that this was going to be used for Kareem, but he didn't make it into the game.
+	- 'package_shot_sigduncan' (Tim Duncan)
+	- 'package_shot_sigdurant' (Kevin Durant)
+	- 'package_shot_sigginobli' (Manu Ginobili)
+	- 'package_shot_siggranger' (Danny Granger)
+	- 'package_shot_sighardaway' (Tim Hardaway)
+	- 'package_shot_sighoward' (Dwight Howard)
+	- 'package_shot_sigisiah' (Isiah Thomas)
+	- 'package_shot_sigiverson' (Allen Iverson)
+	- 'package_shot_sigkg' (Kevin Garnett)
+	- 'package_shot_sigkobe' (Kobe Bryant)
+	- 'package_shot_siglebron' (LeBron James)
+	- 'package_shot_sigmalone' (Karl Malone)
+	- 'package_shot_sigmelo' (Carmelo Anthony)
+	- 'package_shot_sigmullin' (Chris Mullin)
+	- 'package_shot_signash' (Steve Nash)
+	- 'package_shot_signoah' (Joakim Noah)
+	- 'package_shot_signowitzki' (Dirk Nowitzki)
+	- 'package_shot_sigpau' (Pau Gasol)
+	- 'package_shot_sigpaul' (Chris Paul)
+	- 'package_shot_sigpeja' (Peja Stojakovic)
+	- 'package_shot_sigpierce' (Paul Pierce) is unused, perhaps because it doesn't look very good.
+	- 'package_shot_sigroy' (Brandon Roy)
+	- 'package_shot_sigshaq' (Shaquille O'Neal)
+	- 'package_shot_sigsmith' (Kenny Smith)
+	- 'package_shot_sigwade' (Dwyane Wade)
+	- 'package_shot_sigyao' (Yao Ming)
+- 'Archetype' roughly corresponds to the position that the player plays (e.g Dwight Howard is a "5", Rajon Rondo is a "1")
+	- Oddly, Al Horford is the only player with a value of "6".  I suspect that this is a bug.
+- 'AttribKey' is the player model that the player uses.
+- 'ReflectionKey' is the player model that is reflected off the court's surface.  This directly corresponds to AttribKey.
+- 'ScaledHeight' is the height of the player.  This doesn't change the player's proportions, it just scales everything in their player model.  Use this to adjust how tall a player is (but not how skinny or muscular they are).
+- 'Handedness' controls which hand a player shoots with.
+	- "l" for left-handed
+	- "r" for right-handed
+	- "m" is only used by JAMbots
+- 'JerseyPackType' defines which team uniform lettering the player uses.  It also determines the color of team-controlled accessories in the body textures.
+- 'SpeechID' is the ID for the player name audio used during a game.
+- 'AssetID' is the collection of textures assigned to the player ID (PLYN, PLSH, NAME_TEX).  This should always be the same as the player ID, unless you want the same nametags and headshot photo to be used for a player on a different team.
+- 'HotSpot_Id' is the location of the player's hot spot.
+- 'Unlocked' determines whether or not the player is available by default, or needs to be unlocked in the Jam Store.
+	- If you want a player to be available by default, set this to "1".
+- 'Deleted' is always "0", except for the vacant slots that would later be used for players added in the official roster updates.
+- 'Online' seems to be a player's eligibility for being used in online games.
+	- All NBA players that are unlocked by default have a value of "1", and everyone else has a "0"
+- 'Height' is in inches +1, but it doesn't seem to control anything.
+- 'Weight' is in kilograms, but it doesn't seem to control anything.
+- 'BirthDay' is the day of their birthday, but it doesn't seem to control anything.
+- 'BirthMonth' is the month of their birthday, but it doesn't seem to control anything.
+- 'BirthYear' is the year of their birthday, but it doesn't seem to control anything.
+- 'IsCreated' is always "0".
+- 'NewUnlocked' will add the "NEW" icon over the team's logo on the team selection screen.
+- 'Challenge_Aggression' is always "-1".
+- 'Challenge_Base' is always "-1".
+- 'Challenge_Block' is always "-1".
+- 'Challenge_Defensive_Lag' is always "-1".
+- 'Challenge_Shove' is always "-1".
+- 'Challenge_Spin' is always "-1".
+- 'Tendency_Anklebreaker' is always "0".
+- 'Tendency_Fadeaway' is always "0".
+- 'Tendency_Perimeter' is always "0".
+- 'Tendency_Steal' is always "0".
+
+
 # How to Edit the Localization Database String Table to Modify In-Game Text
 eng_us.db is the localization database for the US version of the game.  This database contains only one table ("LanguageStrings") for all non-image text in the game, aside from the team and player names that are in bounce.db.  It can be modified with a combination of FIFA DB Master and FIFA DB Converter:
 
