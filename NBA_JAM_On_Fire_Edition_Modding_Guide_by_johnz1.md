@@ -96,44 +96,7 @@ QuickBMS (https://aluigi.altervista.org/quickbms.htm) and the 'nbajamfire.bms' s
 
 
 # Texture Files
-Texture files are stored in archive files.  These are all of the texture files for players, teams, and arenas.
-| Archive File | Filename | Description | bounce.db Field | Resolution | DDS Compression Type | Mip maps | Notes |
-| - | - | - | - | - | - | - | - |
-| fecro_big.ast | PLSH_* | In-menu player headshot photos | AssetID | 256x256 | DXT5 | No |  |
-| fecro_big.ast | PLYN_* | In-menu player nametags | AssetID | 256x32 | DXT5 | No |  |
-| fecro_big.ast | TMBR_* | Team logos in the Road Trip team selection menu | None (Hard-coded to the stock team IDs) | 256x64 | DXT5 | No |  |
-| fecro_big.ast | TMLG_* | Team logo in matchup screen just before tipoff | AssetID | 256x256 | DXT5 | No |  |
-| fecro_big.ast | TMPN_* | Team logo in team & player selection screen (background behind the player headshot photos) | AssetID | 512x256 | DXT5 | No |  |
-| fecro_big.ast | TMSD_* | JAM Store team logo | AssetID | 256x256 | DXT5 | No |  |
-| fecro_big.ast | TMSI_* | Small square team logo in team selection screen | AssetID | 128x128 | DXT5 | No |  |
-| ge_environment_big.ast | COURT_BASELINE_* | Court baseline text or logo | Environment | Varies | DXT5 | Yes |  |
-| ge_environment_big.ast | COURT_CENTER_* | Center court logo | Environment | Varies | DXT5 | Yes |  |
-| ge_environment_big.ast | COURT_SECONDARY_* | Secondary court logo (usually in between the paint and the three point line) | Environment | Varies | DXT5 | Yes |  |
-| ge_environment_big.ast | COURT_SURFACE_* | Hardwood court surface | Environment | 2048x1024 | DXT1 | Yes |  |
-| ge_environment_big.ast | CROWD_COACH_* | Team coaches on the sideline | RenderAssetID | 256x512 or 128x256 | DXT5 | Yes |  |
-| ge_environment_big.ast | CROWD_FINGERS_* | Foam fingers in the crowd | Environment | 256x512 | DXT5 | Yes |  |
-| ge_environment_big.ast | CROWD_LM_* | Unknown - Nothing looks different after replacing it |  |  |  |  |  |
-| ge_environment_big.ast | CROWD_MASCOT_* | Team mascot | Environment | 256x128 | DXT5 | Yes |  |
-| ge_environment_big.ast | CROWD_SIGNAGE_* | Signs held up by fans in the crowd | Environment | 128x128 | DXT5 | Yes |  |
-| ge_environment_big.ast | DORNA_* | Scrolling banners on the media table | Environment | 512x512 | DXT1 | Yes |  |
-| ge_environment_big.ast | MEDIATABLE_* | Media table scoreboard and right team logo | RenderAssetID and Environment | 512x128 | DXT5 | Yes | The media table color for an 'Environment' is determined by this file, but it is assigned to team 'RenderAssetID', not 'Environment'. |
-| ge_environment_big.ast | MEDIATABLE_LOGO_* | Media table scoreboard team logo (left) | RenderAssetID | 128x128 | DXT1 | Yes |  |
-| ge_environment_big.ast | POWERRING_* | Thin arena video screen | Environment | 256x16 | DXT1 | Yes | UTA is the only one that is 256x32. |
-| ge_environment_big.ast | POWERRING_GLOW_* | Glowing outline of thin arena video screen ('POWERRING') | Environment | 64x64 | DXT5 | Yes |  |
-| ge_environment_big.ast | SIDELINE_* | Arena banners and NBA sign above arena walkways | Environment | 256x128 | DXT1 | Yes |  |
-| ge_environment_big.ast | STADIUM_STANDS_LM_* | Unknown - Nothing looks different after replacing it |  |  |  |  |  |
-| ge_environment_big.ast | STAN_BODY_* | Stanchion texture | Environment | 512x512 | DXT1 | Yes |  |
-| ge_environment_big.ast | VIP_LIGHTS_* | Arena stair lighting | Environment | 64x64 | DXT5 | Yes |  |
-| ge_hud_big.ast | INTRO_TEAM_BG_* | Team background of pre-game "versus" screen | RenderAssetID | 512x256 | DXT5 | Yes |  |
-| ge_hud_big.ast | *_LOGO_TEX | Small team logo in the small scoreboard at the top of the screen | RenderAssetID | 128x32 | DXT5 | Yes |  |
-| ge_hud_big.ast | *_NAME_TEX | In-game player nametags | AssetID | 512x128 | DXT5 | Yes | Don't use "Error Diffusion Dithering" because it leaves artifacts (dark dots).  Ideally, use "Bilinear" for mipmaps.  If the compressed file doesn't fit, use "Nearest Neighbor". |
-| ge_hud_big.ast | SCORE_TEAM_* | Scoreboard team logo after a score | RenderAssetID | 256x64 | DXT5 | Yes |  |
-| ge_hud_big.ast | TEAM_WINS_* | Post-game "(TEAM NAME) WINS!" text | RenderAssetID | 1024x256 | DXT5 | Yes |  |
-| ge_player_big.ast | *_BODY_DIF | In-game player body textures | AttribKey | 512x512 | DXT5 | Yes | "MARK_TURMELL_HOME_BODY_DIF" is the only one that is 1024x1024. |
-| ge_player_big.ast | *_HEAD_DIF | In-game player heads | AttribKey | 1024x512 | DXT5 | Yes | "DWIGHT_HOWARD_ADI_AWAY_HEAD_DIF", "DWIGHT_HOWARD_AWAY_HEAD_DIF", and "KOBE_BRYANT_AWAY_HEAD_DIF" are the only ones that are 1024x1024. |
-| ge_player_big.ast | (Shoes) | In-game player shoes | AttribKey | Mostly 256x256, but sometimes 1024x1024 | DXT1 | No |  |
-| ge_player_big.ast | (Uniforms) | In-game player uniforms | AttribKey | 512x512 | DXT5 | Yes |  |
-| jersey_font_big.ast | JERSEY_FONT_* | In-game uniform numbers and letters | JerseyPackType | Mostly 512x512, but some 128x128 and 64x64 | DXT5 | Sometimes |  |
+Texture files are stored in archive files.  See the "reference_texture_files" table in the reference database for details about all texture files for players, teams, and arenas.
 
 
 # How to Edit the bounce.db Database
