@@ -240,7 +240,7 @@ This table defines all players in the game.
 - 'JerseyPackType' defines which team uniform lettering the player uses.  It also determines the color of team-controlled accessories in the body textures.
 - 'SpeechID' is the ID for the player name audio used during a game.
 - 'AssetID' is the collection of textures assigned to the player ID (PLYN, PLSH, NAME_TEX).  This should always be the same as the player ID, unless you want the same nametags and headshot photo to be used for a player on a different team.
-- 'HotSpot_Id' is the location of the player's hot spot.  See the "Player Hot Spot Locations.png" reference image.
+- 'HotSpot_Id' is the location of the player's hot spot.  See the "NBA JAM On Fire Edition - Player Hot Spot Locations.png" reference image.
 - 'Unlocked' determines whether or not the player is available by default, or needs to be unlocked in the Jam Store.
 	- If you want a player to be available by default, set this to "1".
 - 'Deleted' is always "0", except for the vacant slots that would later be used for players added in the official roster updates.
@@ -337,17 +337,17 @@ The guidelines provided below are based on my analysis of the stock head texture
  	- Ideally, use photos from the same game.  This kind of consistency looks better, and makes things easier when color correcting.  This isn't usually possible, so at least try to have all the photos be from the same small period of time.  My standard is to at least have "Front" and "Side" be from the same game because the transition between these two happens very frequently, and can be jarring if they aren't similar looking.
 	- Ideally, the "Yelling", "Angry", "Pain", and "Front" photos should all be facing the camera and not turned to the side.
 	- Ideally, don't use photos where the camera is very close to the player or zoomed in.  It's difficult to make these look right, and sometimes they just don't ever look good.
-	- The "Side" photo should be turned to the side, but not completely.  If it's completely turned to the side, it won't look good when the player is moving diagonally.  You should be able to see the far side eye, but not anything past it.  See the example head textures in "Player Head Texture Examples.pdn":
+	- The "Side" photo should be turned to the side, but not completely.  If it's completely turned to the side, it won't look good when the player is moving diagonally.  You should be able to see the far side eye, but not anything past it.  See the example head textures in "NBA JAM On Fire Edition - Player Head Texture Examples.pdn":
 		- Ricky Rubio is a good example of a head that's turned too far.
 		- Kevin Durant is a good example of a head that's not turned far enough.
 		- Tim Duncan is a good example of a proper "Side" head.
-	- The "Rear" photo should be of the back of the head, but slightly turned.  If their head isn't slightly turned, it won't look good when the player is moving diagonally.  It should be turned enough so that you can see the indent of their eye socket, but not the eye itself, and you should at least be able to see part of the far side ear.  If you can't see both ears, the head is probably turned too far.  See the example head textures in "Player Head Texture Examples.pdn":
+	- The "Rear" photo should be of the back of the head, but slightly turned.  If their head isn't slightly turned, it won't look good when the player is moving diagonally.  It should be turned enough so that you can see the indent of their eye socket, but not the eye itself, and you should at least be able to see part of the far side ear.  If you can't see both ears, the head is probably turned too far.  See the example head textures in "NBA JAM On Fire Edition - Player Head Texture Examples.pdn":
 		- Anthony Davis is a good example of a head that's turned too far.
 		- Paul Pierce is a good example of a head that's not turned enough.
 		- Tim Duncan is a good example of a proper "Rear" head.
 - Choose one photo to use for each of the six heads.
 	- I recommend moving the others in the "Archive" folders.
-- Crop out the backgrounds of the six photos.  Use the example head textures in "Player Head Texture Examples.pdn" for reference.
+- Crop out the backgrounds of the six photos.  Use the example head textures in "NBA JAM On Fire Edition - Player Head Texture Examples.pdn" for reference.
 	- I recommend cropping the image to a square resolution.  This will help later when resizing for the final texture image.
 	- There are many applications that can remove the background of an image.  My current favorite for free applications is the "Remove background" feature of Windows Paint.
 	- The "Yelling", "Angry", "Pain", and "Front" heads should only include player's head.  The neck should be removed.
