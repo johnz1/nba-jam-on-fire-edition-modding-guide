@@ -186,12 +186,12 @@ This table defines all players in the game.
 		- 'package_dunk_jordan' has a very exciting name, but it seems to be the same as 'package_dunk_generic' because it always performs the same dunk.
 		- 'package_layup_bigman' doesn't seem to be any different from 'package_layup_generic'.
 		- 'package_layup_highskill' doesn't seem to be any different from 'package_layup_generic'.
-- 'Loco_Package' is the running animation that the player uses.
+- 'Loco_Package' is the running animation that the player uses.  See the loco package reference video here: https://www.mediafire.com/file/7a66hlkhc6gx5nt/NBA_JAM_On_Fire_Edition_-_Player_Loco_Packages.mp4/file
 	- 'package_loco_smallman' leans forward the most.
 	- 'package_loco_swingman' is more upright.
 	- 'package_loco_bigman' is very upright.
 	- 'mirror' is only used by the JAMbots.
-- 'Shot_Package' is the shot animation that the player uses.
+- 'Shot_Package' is the shot animation that the player uses.  See the shot package reference video here: https://www.mediafire.com/file/ho2waph4dxzccx1/NBA_JAM_On_Fire_Edition_-_Player_Shot_Packages.mp4/file
 	- 'package_shot_generic' is the style that most players in the stock game use.
 	- 'package_shot_generic_bigman'
 	- 'package_shot_sigbird' (Larry Bird)
