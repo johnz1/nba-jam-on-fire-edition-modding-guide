@@ -193,15 +193,16 @@ This table defines all players in the game.
 - 'Archetype' roughly corresponds to the position that the player plays (e.g Dwight Howard is a "5", Rajon Rondo is a "1")
 	- Oddly, Al Horford is the only player with a value of "6".  I suspect that this is a bug.
 - 'AttribKey' is the player model that the player uses.
-- 'ReflectionKey' is the player model that is reflected off the court's surface.  This directly corresponds to AttribKey.
+- 'ReflectionKey' is the player model that is reflected off the court's surface.  This directly corresponds to AttribKey.  See the "reference_player_attribkeys" table in the reference database for the pairing of all AttribKeys and ReflectionKeys.
 - 'ScaledHeight' is the height of the player.  This doesn't change the player's proportions, it just scales everything in their player model.  Use this to adjust how tall a player is (but not how skinny or muscular they are).
 	- I believe this is the formula that the stock game uses: <Height in inches> * 0.0117 + 0.1
+	- See the "reference_player_scaled_height" table in the reference database for the conversion of height to ScaledHeight values.
 - 'Handedness' controls which hand a player shoots with.
 	- "l" for left-handed
 	- "r" for right-handed
 	- "m" is only used by JAMbots
-- 'JerseyPackType' defines which team uniform lettering the player uses.  It also determines the color of team-controlled accessories in the body textures.
-- 'SpeechID' is the ID for the player name audio used during a game.
+- 'JerseyPackType' defines which team uniform lettering the player uses.  It also determines the color of team-controlled accessories in the body textures.  See the "reference_team_jerseypacktype" table in the reference database for details about every JerseyPackType.
+- 'SpeechID' is the ID for the player name audio used during a game.  See the "reference_player_speechid" table in the reference database.
 - 'AssetID' is the collection of textures assigned to the player ID (PLYN, PLSH, NAME_TEX).  This should always be the same as the player ID, unless you want the same nametags and headshot photo to be used for a player on a different team.
 - 'HotSpot_Id' is the location of the player's hot spot.  See the "NBA JAM On Fire Edition - Player Hot Spot Locations.png" reference image.
 - 'Unlocked' determines whether or not the player is available by default, or needs to be unlocked in the Jam Store.
@@ -263,7 +264,7 @@ This table defines all teams in the game.
 - 'BenchColour' doesn't seem to control anything.
 - 'AssetID' sets the AssetID package for the team.  This includes the TMLG, TMPN, and TMSI files.
 - 'RenderAssetID' sets the RenderAssetID package for the team.  This includes the INTRO_TEAM_BG, LOGO_TEX, SCORE_TEAM, TEAM_WINS, CROWD_COACH, MEDIATABLE, and MEDIATABLE_LOGO files.
-- 'SpeechID' is the ID number for the team name audio used during a game.
+- 'SpeechID' is the ID number for the team name audio used during a game.  See the "reference_team_speechid" table in the reference database.
 - 'Environment' is the ID of the arena that the team uses for their home games.
 
 
