@@ -240,7 +240,7 @@ This table defines all players in the game.
 - 'JerseyPackType' defines which team uniform lettering the player uses.  It also determines the color of team-controlled accessories in the body textures.
 - 'SpeechID' is the ID for the player name audio used during a game.
 - 'AssetID' is the collection of textures assigned to the player ID (PLYN, PLSH, NAME_TEX).  This should always be the same as the player ID, unless you want the same nametags and headshot photo to be used for a player on a different team.
-- 'HotSpot_Id' is the location of the player's hot spot.
+- 'HotSpot_Id' is the location of the player's hot spot.  See the "Player Hot Spot Locations.png" reference image.
 - 'Unlocked' determines whether or not the player is available by default, or needs to be unlocked in the Jam Store.
 	- If you want a player to be available by default, set this to "1".
 - 'Deleted' is always "0", except for the vacant slots that would later be used for players added in the official roster updates.
@@ -311,6 +311,8 @@ eng_us.db is the localization database for the US version of the game.  This dat
 - Edit the database in DB Master ("DBMaster_15").
 	- I highly recommend exporting the table to a text file, editing that file in a text editor, then importing it with DB Master.
 - Convert the file back to big endian with FIFA Database Converter.
+
+Some fields support carriage returns.  To insert one, use "\n".
 
 
 # How to Create Player Head Textures
